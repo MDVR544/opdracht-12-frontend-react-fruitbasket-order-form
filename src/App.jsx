@@ -1,44 +1,78 @@
 
 import './App.css'
+import {useState} from "react";
+
 
 function App() {
+    const [strawberryAmount, setStrawberryAmount] = useState(0);
+    const [bananaAmount, setBananaAmount] = useState(0);
+    const [appleAmount, setAppleAmount] = useState(0);
+    const [kiwiAmount, setKiwiAmount] = useState(0);
 
-  return (
+
+    return (
     <>
         {/*opdracht 1*/}
         <h1>Fruitmand bezorgservice</h1>
 
             <article className='fruitTile'>
                 <h2>Aardbeien</h2>
-                <button type="button">-</button>
-                <p>0</p>
-                <button type="button">+</button>
+                <button type="button"
+                onClick={() => strawberryAmount !== 0 ? setStrawberryAmount(strawberryAmount - 1) : 0}
+                >-</button>
+                {strawberryAmount}
+                <button
+                    type="button"
+                    onClick={() => setStrawberryAmount(strawberryAmount + 1)}
+                >+</button>
             </article>
 
         <article className='fruitTile'>
             <h2>Bananen</h2>
-            <button type="button">-</button>
-            <p>0</p>
-            <button type="button">+</button>
+            <button type="button"
+                    onClick={() => bananaAmount !== 0 ? setBananaAmount(bananaAmount - 1) : 0}
+            >-</button>
+            {bananaAmount}
+            <button
+                type="button"
+                onClick={() => setBananaAmount(bananaAmount + 1)}
+            >+</button>
         </article>
 
         <article className='fruitTile'>
             <h2>Appels</h2>
-            <button type="button">-</button>
-            <p>0</p>
-            <button type="button">+</button>
+            <button type="button"
+                    onClick={() => appleAmount !== 0 ? setAppleAmount(appleAmount - 1) : 0}
+            >-</button>
+            {appleAmount}
+            <button
+                type="button"
+                onClick={() => setAppleAmount(appleAmount + 1)}
+            >+</button>
         </article>
 
         <article className='fruitTile'>
             <h2>Kiwi's</h2>
-            <button type="button">-</button>
-            <p>0</p>
-            <button type="button">+</button>
+            <button type="button"
+                    onClick={() => kiwiAmount !== 0 ? setKiwiAmount(kiwiAmount - 1) : 0}
+            >-</button>
+            {kiwiAmount}
+            <button
+                type="button"
+                onClick={() => setKiwiAmount(kiwiAmount + 1)}
+            >+</button>
         </article>
 
-        <button type="button">Reset</button>
+        <button type="button"
+        onClick={()=>
+            [setStrawberryAmount(0),
+                setBananaAmount(0),
+                setAppleAmount(0),
+                setKiwiAmount(0)]}
+        >
+            Reset</button>
 
-        {/*Opdracht 2*/}
+   {/*opdracht 2*/}
         <form>
             <label htmlFor="form-firstname">
                 Voornaam
