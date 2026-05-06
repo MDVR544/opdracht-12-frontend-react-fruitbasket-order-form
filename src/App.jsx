@@ -8,10 +8,39 @@ function App() {
     const [bananaAmount, setBananaAmount] = useState(0);
     const [appleAmount, setAppleAmount] = useState(0);
     const [kiwiAmount, setKiwiAmount] = useState(0);
+    const [firstnameValue, setFirstnameValue] = useState("");
+    const [lastnameValue, setLastnameValue] = useState("");
+    const [ageValue, setAgeValue] = useState(0);
+    const [postalCodeValue, setPostalCodeValue] = useState("");
+    const [deliveryFrequencyValue, setDeliveryFrequencyValue] = useState("")
+    const [deliveryMomentDayValue, setDeliveryMomentDayValue] = useState(false);
+    const [deliveryMomentNightValue, setDeliveryMomentNightValue] = useState(false);
+    const [commentValue, setCommentValue] = useState("");
+    const [generalTermValue, setGeneralTerms] = useState(false);
+
+    function handleSubmit(e){
+        e.preventDefault();
+        return console.log(
+            strawberryAmount,
+            bananaAmount,
+            appleAmount,
+            kiwiAmount,
+            firstnameValue,
+            lastnameValue,
+            ageValue,
+            postalCodeValue,
+            deliveryFrequencyValue,
+            deliveryMomentDayValue,
+            deliveryMomentNightValue,
+            commentValue,
+            generalTermValue
+            );
+    }
 
 
     return (
     <>
+        <div>
         {/*opdracht 1*/}
         <h1>Fruitmand bezorgservice</h1>
 
@@ -71,16 +100,16 @@ function App() {
                 setKiwiAmount(0)]}
         >
             Reset</button>
-
+        </div>
    {/*opdracht 2*/}
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor="form-firstname">
                 Voornaam
                 <input type="text"
                 name="firstName"
                 id="form-firsNname"
-                // value={}
-                // onChange{(e)=>(())}
+                value={firstnameValue}
+                onChange={(e)=> setFirstnameValue(e.target.value)}
                 />
             </label>
             <label htmlFor="form-lastName">
@@ -88,8 +117,8 @@ function App() {
                 <input type="text"
                        name="lastName"
                        id="form-lastName"
-                    // value={}
-                    // onChange{(e)=>(())}
+                    value={lastnameValue}
+                    onChange={(e)=>setLastnameValue(e.target.value)}
                 />
             </label>
             <label htmlFor="form-age">
@@ -97,43 +126,50 @@ function App() {
                 <input type="text"
                        name="age"
                        id="form-age"
-                    // value={}
-                    // onChange{(e)=>(())}
+                    value={ageValue}
+                    onChange={(e)=> setAgeValue(e.target.value)}
                 />
             </label>
             <label htmlFor="form-postalCode">
-                Leeftijd
+                Postcode
                 <input type="text"
                        name="postalcode"
                        id="form-postalCode"
-                    // value={}
-                    // onChange{(e)=>(())}
+                    value={postalCodeValue}
+                    onChange={(e)=> setPostalCodeValue(e.target.value)}
                 />
             </label>
             <label htmlFor="form-delivery-frequency">
                 Bezorgfrequentie
-                <input type="text"
-                       name="delivery frequency"
-                       id="form-delivery-frequency"
-                    // value={}
-                    // onChange{(e)=>(())}
-                />
+                <select
+                    name="delivery frequency"
+                    id="form-delivery-frequency"
+                value={deliveryFrequencyValue}
+                onChange={(e)=>setDeliveryFrequencyValue(e.target.value)}>
+                <option value="iedere week">iedere week</option>
+                <option value="om de week">om de week</option>
+                <option value="iedere maand">iedere maand</option>
+                </select>
+
             </label>
+            {/*Hier nog toevoegen dat er een message komt ipv true of false en de twee radio's proberen samen te voegen.*/}
+
             <label htmlFor="form-delivery-moment-day">
                 <input type="radio"
                        name="delivery moment day"
                        id="form-delivery-moment-day"
-                    // value={}
-                    // onChange{(e)=>(())}
+                    value={deliveryMomentDayValue}
+                    onChange={(e)=> setDeliveryMomentDayValue(e.target.value)}
                 />
                 Overdag
             </label>
+
             <label htmlFor="form-delivery-moment-night">
                 <input type="radio"
                        name="delivery moment night"
                        id="form-delivery-moment-night"
-                    // value={}
-                    // onChange{(e)=>(())}
+                    value={deliveryMomentNightValue}
+                    onChange={(e)=> setDeliveryMomentNightValue(e.target.value)}
                 />
                 's Avonds
             </label>
@@ -143,11 +179,22 @@ function App() {
                     name="comments"
                     id="form-comments"
                     cols="30"
-                    rows="10">
-                    {/*// value={}*/}
-                    {/*// onChange{(e)=>(())}*/}
+                    rows="10"
+                    value={commentValue}
+                    onChange={(e)=> setCommentValue(e.target.value)}>
                 </textarea>
             </label>
+            {/*Hier nog toevoegen dat er een message komt ipv true of false*/}
+            <label htmlFor="form-general-terms">
+                <input type="checkbox"
+                name="general terms"
+                id="form-general-terms"
+                       value={generalTermValue}
+                       onChange={(e=> setGeneralTerms(e.target.value))}
+                />
+                Ik ga akkoord met de voorwaarden
+            </label>
+            <button type="submit">Verzend</button>
         </form>
 
     </>
